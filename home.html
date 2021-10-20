@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Search App</title>
     <style>
+      #heading {
+        text-align: center;
+      }
       #container {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -29,8 +32,8 @@
   <body>
     <div id="heading">
       <h1 id="h1">Github Search App</h1>
-      <label for="">Username</label>
-      <input type="text" id="input" />
+      <label for="">Username: </label>
+      <input type="text" id="input" placeholder="type your username" />
     </div>
     <div id="container"></div>
     <script src="index.js"></script>
