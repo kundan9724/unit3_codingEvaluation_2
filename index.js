@@ -1,6 +1,6 @@
 async function search()
 {   let input = document.getElementById("input").value;
-    let res = await fetch(`https://api.github.com/search/users?q=${input}`);
+    let res = await fetch(`https://api.github.com/search/users?q=${input}&page=1&per_page=10`);
     let data = await res.json();
    console.log(data.items);
     displayGitProfiles(data.items);
@@ -27,5 +27,19 @@ function displayGitProfiles(data)
         container.append(div);
         }
 }
+const debounce = function (fn, delay)
+{
+    let timer;
+    return function ()
+    {
+        let context = this, args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(context, args)
+        }, delay)
+        }
+}
+const debounceFunction = debounce(search, 500);
+
 let input = document.getElementById("input");
-input.onkeyup = search;
+input.onkeyup = debounceFunction;
